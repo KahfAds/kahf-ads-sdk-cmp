@@ -29,7 +29,7 @@ No credentials are needed. The SDK is served from a public Maven repository host
 ```kotlin
 // settings.gradle.kts -> dependencyResolutionManagement.repositories
 maven {
-    url = uri("https://OWNER.github.io/kahf-ads-sdk-cmp/maven")
+    url = uri("https://kahfads.github.io/kahf-ads-sdk-cmp/maven")
     content { includeGroupAndSubgroups("co.uk.kahf.kahfAds") }
 }
 
@@ -43,10 +43,10 @@ automatically.
 ### iOS (Swift Package Manager)
 
 In Xcode choose **File > Add Package Dependencies** and enter
-`https://github.com/OWNER/kahf-ads-sdk-cmp`, or add it to `Package.swift`:
+`https://github.com/KahfAds/kahf-ads-sdk-cmp`, or add it to `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/OWNER/kahf-ads-sdk-cmp", from: "0.2.28")
+.package(url: "https://github.com/KahfAds/kahf-ads-sdk-cmp", from: "0.2.28")
 ```
 
 If your iOS app is a Compose Multiplatform shared module, use the Gradle dependency above instead.
