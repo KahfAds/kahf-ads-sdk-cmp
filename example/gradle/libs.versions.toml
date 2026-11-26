@@ -2,7 +2,7 @@
 agp = "9.4.1"
 androidx-activityCompose = "1.8.0"
 composeMultiplatform = "1.9.3"
-kotlin = "2.2.10"
+kotlin = "2.2.21"
 kotlinxCoroutinesCore = "1.10.2"
 
 [libraries]

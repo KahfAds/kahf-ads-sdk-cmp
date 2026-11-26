@@ -85,81 +85,77 @@ fun AdExampleContent(modifier: Modifier = Modifier) {
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        // Small Banner Ad Example
+        // Leaderboard 728x90
         AdSection(
-            title = "Small Banner Ad",
+            title = "Leaderboard 728x90",
+            adType = AdType.BANNER_LEADERBOARD
+        ) {
+            LeaderboardAdView(
+                viewConfig = KahfAdsViewConfig(
+                    screenName = "example_leaderboard",
+                    placementId = PlacementId.Network(kahfAdsId = "pl_d3dda8442d7c4908"),
+                    refreshIntervalInMillis = 30_000
+                ),
+                kahfAdsAdImpressionListener = createAdImpressionListener("Leaderboard 728x90", "Kahf Ads"),
+                fallbackAdImpressionListener = createFallbackAdImpressionListener("Leaderboard 728x90"),
+                adInfoConfig = AdInfoConfig(showInfoIcon = true)
+            )
+        }
+
+        // Banner 320x100
+        AdSection(
+            title = "Banner 320x100",
+            adType = AdType.LARGE_BANNER
+        ) {
+            LargeBannerAdView(
+                viewConfig = KahfAdsViewConfig(
+                    screenName = "example_banner",
+                    placementId = PlacementId.Network(kahfAdsId = "pl_d3dda8442d7c4908"),
+                    refreshIntervalInMillis = 30_000
+                ),
+                kahfAdsAdImpressionListener = createAdImpressionListener("Banner 320x100", "Kahf Ads"),
+                fallbackAdImpressionListener = createFallbackAdImpressionListener("Banner 320x100"),
+                adInfoConfig = AdInfoConfig(showInfoIcon = true)
+            )
+        }
+
+        // Small Banner 320x50
+        AdSection(
+            title = "Small Banner 320x50",
             adType = AdType.BANNER
         ) {
             BannerAdView(
                 viewConfig = KahfAdsViewConfig(
                     screenName = "example_small_banner",
-                    placementId = PlacementId.Network(
-                        kahfAdsId = "pl_d3dda8442d7c4908",
-                    ),
-                    refreshIntervalInMillis = 3_000
-                ),
-                kahfAdsAdImpressionListener = createAdImpressionListener("Small Banner", "Kahf Ads"),
-                adInfoConfig = AdInfoConfig(
-                    showInfoIcon = true,
-                    onWhyThisAdClicked = {
-                        println("Why this ad clicked - Small Banner")
-                    },
-                    onCloseAdClicked = {
-                        println("Close ad clicked - Small Banner")
-                    }
-                )
-            )
-        }
-        
-        // Medium Banner Ad Example
-        AdSection(
-            title = "Medium Banner Ad",
-            adType = AdType.LARGE_BANNER
-        ) {
-            LargeBannerAdView(
-                viewConfig = KahfAdsViewConfig(
-                    screenName = "example_medium_banner",
                     placementId = PlacementId.Network(kahfAdsId = "pl_d3dda8442d7c4908"),
                     refreshIntervalInMillis = 30_000
                 ),
-                adInfoConfig = AdInfoConfig(
-                    showInfoIcon = true,
-                    onWhyThisAdClicked = {
-                        println("Why this ad clicked - Medium Banner")
-                    },
-                    onCloseAdClicked = {
-                        println("Close ad clicked - Medium Banner")
-                    }
-                )
+                kahfAdsAdImpressionListener = createAdImpressionListener("Small Banner 320x50", "Kahf Ads"),
+                fallbackAdImpressionListener = createFallbackAdImpressionListener("Small Banner 320x50"),
+                adInfoConfig = AdInfoConfig(showInfoIcon = true)
             )
         }
 
-        // Medium Banner Ad Example
+        // Medium Rectangle 300x250
         AdSection(
-            title = "Large Banner Ad",
-            adType = AdType.LARGE_BANNER
+            title = "Medium Rectangle 300x250",
+            adType = AdType.MEDIUM_RECTANGLE
         ) {
             MediumRectangleAdView(
                 viewConfig = KahfAdsViewConfig(
-                    screenName = "example_medium_banner",
+                    screenName = "example_medium_rectangle",
                     placementId = PlacementId.Network(kahfAdsId = "pl_d3dda8442d7c4908"),
                     refreshIntervalInMillis = 30_000
                 ),
-                adInfoConfig = AdInfoConfig(
-                    showInfoIcon = true,
-                    onWhyThisAdClicked = {
-                        println("Why this ad clicked - Medium Banner")
-                    },
-                    onCloseAdClicked = {
-                        println("Close ad clicked - Medium Banner")
-                    }
-                )
+                kahfAdsAdImpressionListener = createAdImpressionListener("Medium Rectangle 300x250", "Kahf Ads"),
+                fallbackAdImpressionListener = createFallbackAdImpressionListener("Medium Rectangle 300x250"),
+                adInfoConfig = AdInfoConfig(showInfoIcon = true)
             )
         }
-        
-        // Large Banner Ad Example
+
+        // Native Ad Example
         AdSection(
-            title = "Large Banner Ad",
+            title = "Native Ad",
             adType = AdType.NATIVE
         ) {
             NativeAdView(

@@ -5,7 +5,7 @@ Show KahfAds banner and native ads from shared Compose code on Android and iOS.
 ## Features
 
 - **One UI for Android and iOS**: Compose Multiplatform ad views
-- **Four formats**: banner, large banner, medium rectangle, and native ads
+- **Five formats**: banner, large banner, medium rectangle, leaderboard, and native ads
 - **Kahf Ads network**: ads served by Kahf Ads
 - **Automatic fallback**: if Kahf Ads can't serve an ad, in-house ads are shown
 - **Auto-refresh**: configurable interval; pauses when the app is in the background, the ad is off-screen, or the info dialog is open
@@ -18,6 +18,12 @@ Show KahfAds banner and native ads from shared Compose code on Android and iOS.
 - **Android**: minSdk 21, JVM target 11
 - **iOS**: iOS 13.0+ (`iosArm64`, `iosSimulatorArm64`, `iosX64`)
 - **Compose Multiplatform** in your shared module
+
+### iOS setup for Compose Multiplatform apps
+
+- Use Kotlin 2.2.20 or newer when building with the Xcode 26 SDK.
+- If your shared module builds a static framework, add `-lsqlite3` to **Other Linker Flags** in Xcode.
+- Add `CADisableMinimumFrameDurationOnPhone` = `YES` to your `Info.plist` (required by Compose).
 
 ## Installation
 
@@ -34,7 +40,7 @@ maven {
 }
 
 // shared module build.gradle.kts -> commonMain.dependencies
-implementation("co.uk.kahf.kahfAds.cmp:kahf-ads-cmp:0.2.28")
+implementation("co.uk.kahf.kahfAds.cmp:kahf-ads-cmp:0.2.29")
 ```
 
 The `INTERNET` and `ACCESS_NETWORK_STATE` permissions are merged into your Android manifest
@@ -46,7 +52,7 @@ In Xcode choose **File > Add Package Dependencies** and enter
 `https://github.com/KahfAds/kahf-ads-sdk-cmp`, or add it to `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/KahfAds/kahf-ads-sdk-cmp", from: "0.2.28")
+.package(url: "https://github.com/KahfAds/kahf-ads-sdk-cmp", from: "0.2.29")
 ```
 
 If your iOS app is a Compose Multiplatform shared module, use the Gradle dependency above instead.
@@ -55,6 +61,9 @@ If your iOS app is a Compose Multiplatform shared module, use the Gradle depende
 
 [`example/`](example) is a runnable Compose Multiplatform app that uses the released SDK exactly as
 you would. Open it in Android Studio, or run `./gradlew :app:assembleDebug` inside `example/`.
+
+For iOS, open `example/iosApp/iosApp.xcodeproj` in Xcode and choose your own team under
+**Signing & Capabilities**. If signing fails, change the bundle identifier too.
 
 ## 1. Initialize the SDK
 
@@ -291,6 +300,7 @@ MediumRectangleAdView(
 | `BannerAdView` | `AdType.BANNER` | 320×50 |
 | `LargeBannerAdView` | `AdType.LARGE_BANNER` | 320×100 |
 | `MediumRectangleAdView` | `AdType.MEDIUM_RECTANGLE` | 300×250 |
+| `LeaderboardAdView` | `AdType.BANNER_LEADERBOARD` | 728×90, for tablets and wide layouts |
 | `NativeAdView` | `AdType.NATIVE` | 16:9 image plus headline, logo, and CTA |
 
 Image ads whose image fails to load are shown in the native layout when the ad includes text.
