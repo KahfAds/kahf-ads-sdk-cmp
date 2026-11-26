@@ -284,33 +284,6 @@ MediumRectangleAdView(
 | `onWhyThisAdClicked` | "Why this ad" tapped |
 | `onCloseAdClicked` | "Close ad" tapped. The SDK closes the dialog but keeps showing the ad; hide the slot yourself if needed |
 
-## Upgrading
-
-### EPOM removed
-
-EPOM support is gone. `PlacementId.Epom`, `PlacementId.Network(epomId = …)`,
-`KahfAdsSdkConfig.epomTrafficPercentage` and the `epomAdImpressionListener` parameter no longer exist.
-Move EPOM slots to `PlacementId.Network(kahfAdsId = "pl_…")` and use `kahfAdsAdImpressionListener`.
-
-### To 0.2.23
-
-All additions are optional; existing code compiles unchanged.
-
-- New `KahfAdsSdkConfig.isDebug`. Set it from your build type to get Kahf Ads test ads and SDK logs in
-  development. See [Debug builds](#debug-builds).
-- `NativeAdView` and `MediumRectangleAdView` take a new `backgroundColor` for the section below the image.
-- Kahf Ads requests now carry your app language (`KahfAdsSdkConfig.language`, or the one inferred from
-  the device timezone), so language-targeted Kahf Ads campaigns can reach your users.
-- Kahf Ads are now served from `serve.kahfads.com`. Earlier releases called `ad.kahf.to`, where current
-  placement ids return `invalid_placement`, so Kahf Ads slots fell back to in-house. Upgrade to get
-  Kahf Ads fill.
-
-### To the release with Kahf Ads (after 0.2.19)
-
-- `adImpressionListener` is replaced by **`kahfAdsAdImpressionListener`**.
-- To serve Kahf Ads, switch a slot to `PlacementId.Network(kahfAdsId = …)`.
-- Ads from a `PlacementId.Inhouse` placement are now reported through `fallbackAdImpressionListener`.
-
 ## Ad formats
 
 | View | Ad type | Size (dp) |
